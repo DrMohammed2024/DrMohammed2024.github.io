@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نموذج إدخال سريري متكامل – PredictiveClinicGPT + Infinity Command Driver</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f4f7; padding: 20px; }
+    .form-box { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 900px; margin: auto; }
+    h2, h3 { text-align: center; color: #2c3e50; }
+    label { font-weight: bold; display: block; margin-top: 15px; color: #34495e; }
+    input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc; font-size: 14px; }
+    button { margin-top: 20px; padding: 12px; width: 100%; background-color: #27ae60; color: #fff; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+    button:hover { background-color: #219150; }
+    .output-box { margin-top: 30px; background: #e8f8f5; padding: 15px; border-radius: 10px; white-space: pre-wrap; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>🧠 النموذج السريري التفاعلي الشامل</h2>
+    <h3>⟪ PredictiveClinicGPT + Infinity Diagnostic Driver XΩ∞ ⟫</h3>
+    <form id="clinicalForm">
+      <label>اسم المريض</label>
+      <input type="text" id="name" required>
+      <label>العمر</label>
+      <input type="number" id="age" required>
+      <label>الجنس</label>
+      <select id="gender">
+        <option value="ذكر">ذكر</option>
+        <option value="أنثى">أنثى</option>
+      </select>
+      <label>الأعراض الحالية</label>
+      <textarea id="symptoms" rows="3"></textarea>
+      <label>التاريخ المرضي</label>
+      <textarea id="history" rows="3"></textarea>
+      <label>العلامات الحيوية (ضغط الدم، النبض، الحرارة)</label>
+      <textarea id="vitals" rows="2"></textarea>
+      <label>⟪ المرحلة 1: نية الطبيب السريرية ⟫</label>
+      <label>نوع المهمة السريرية المطلوبة</label>
+      <select id="taskType">
+        <option>تحليل حالة مرضية حادة</option>
+        <option>تحليل حالة مزمنة</option>
+        <option>خطة علاج عشبي</option>
+        <option>تشخيص تفريقي</option>
+        <option>متابعة حالة</option>
+        <option>وصفة ذكية دقيقة</option>
+        <option>تصميم بروتوكول علاج</option>
+        <option>أخرى</option>
+      </select>
+      <label>التخصص السريري للحالة</label>
+      <select id="specialty">
+        <option>باطني عام</option>
+        <option>أعصاب</option>
+        <option>أطفال</option>
+        <option>أمراض مزمنة</option>
+        <option>مناعية/التهابية</option>
+        <option>طب عشبي تكميلي</option>
+        <option>وقائي/مجتمعي</option>
+      </select>
+      <label>البيانات الإضافية المتوفرة</label>
+      <select id="extraData">
+        <option>تحاليل مخبرية</option>
+        <option>تصوير إشعاعي</option>
+        <option>ملف دوائي</option>
+        <option>لا توجد بيانات إضافية</option>
+      </select>
+      <label>نوع المخرجات المطلوبة من النموذج</label>
+      <select id="outputType">
+        <option>تشخيص مبدئي + خطة علاج</option>
+        <option>خطة متابعة ذكية</option>
+        <option>تحاليل ومؤشرات حمراء</option>
+        <option>وصفة دوائية/عشبية</option>
+        <option>كود GPT Builder</option>
+        <option>ملف سريري قابل للطباعة</option>
+      </select>
+      <label>الطلب السريري الكامل (الوصف التفصيلي)</label>
+      <textarea id="clinicalRequest" rows="5"></textarea>
+      <button type="button" onclick="generateRequest()">🔍 إرسال وتحليل الطلب السريري</button>
+    </form>
+    <div class="output-box" id="output"></div>
+  </div>
+  <script>
+    function generateRequest() {
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const symptoms = document.getElementById('symptoms').value;
+      const history = document.getElementById('history').value;
+      const vitals = document.getElementById('vitals').value;
+      const task = document.getElementById('taskType').value;
+      const specialty = document.getElementById('specialty').value;
+      const extra = document.getElementById('extraData').value;
+      const outputType = document.getElementById('outputType').value;
+      const clinical = document.getElementById('clinicalRequest').value;
+      const finalOutput = `⟪ الطلب السريري التنفيذي – إصدار Infinity Diagnostic Driver XΩ∞ ⟫\n\nمقدم الطلب: د. محمد أحمد القاضي\nالتاريخ: [${new Date().toLocaleDateString()}]\n\n🔹 التخصص السريري: ${specialty}\n🔹 نوع المهمة: ${task}\n\n📋 الطلب السريري الكامل:\n${clinical || 'لم يتم إدخال طلب مفصل'}\n\n📌 بيانات المريض:\nالاسم: ${name}\nالعمر: ${age}\nالجنس: ${gender}\n\n📝 الأعراض:\n${symptoms}\n📖 التاريخ المرضي:\n${history}\n📊 العلامات الحيوية:\n${vitals}\n📎 بيانات إضافية: ${extra}\n\n🔚 المخرجات المطلوبة:\n${outputType}\n\n✅ الوحدات المفعلّة:\n→ AI_Diagnostic_Mapper vX.∞\n→ SmartClinicalDDX Engine\n→ HerboSynth-AI | AI-PK/PD Modulator\n→ AI-FollowUp Generator\n→ RedFlag Alert Escalator\n→ Predictive Outcome Simulator\n→ Clinical Compliance Verifier\n→ GPT-Compatible Output Generator`;
+      document.getElementById('output').innerText = finalOutput;
+    }
+  </script>
+</body>
+</html>
